@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <title>Registrar Salida</title>
+    </head>
+    <body>
+    <h2>Registrar Salida</h2>
+    <form action="/registrar_salida" method="POST">
+        <label>Legajo:</label><br>
+        <input type="number" name="legajo" required><br><br>
+
+        <label>Últimos 4 dígitos del DNI:</label><br>
+        <input type="text" name="dni" maxlength="4" required><br><br>
+
+        <input type="submit" value="Registrar Salida">
+    </form>
+
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+    </body>
+    </html>
+{% endblock %}
+

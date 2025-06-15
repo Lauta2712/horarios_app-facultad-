@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <title>Consultar Registros</title>
+    </head>
+    <body>
+    <h2>Consultar registros horarios</h2>
+
+    <form method="POST" action="/consultar_registros">
+        <label>Legajo:</label><br>
+        <input type="number" name="legajo" required><br><br>
+
+        <label>Últimos 4 dígitos del DNI:</label><br>
+        <input type="text" name="dni" maxlength="4" required><br><br>
+
+        <label>Fecha desde:</label><br>
+        <input type="date" name="fecha_inicio" required><br><br>
+
+        <label>Fecha hasta:</label><br>
+        <input type="date" name="fecha_fin" required><br><br>
+
+        <input type="submit" value="Consultar">
+    </form>
+
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+
+    {% if registros %}
+        <h3>Registros encontrados:</h3>
+        <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Hora de entrada</th>
+            <th>Hora de salida</th>
+            <th>Dependencia</th>
+        </tr>
+        {% for r in registros %}
+        <tr>
+            <td>{{ r.fecha }}</td>
+            <td>{{ r.horaentrada }}</td>
+            <td>{{ r.horasalida if r.horasalida else 'Sin registrar' }}</td>
+            <td>{{ r.dependencia }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+    </body>
+    </html>
+{% endblock %}
+

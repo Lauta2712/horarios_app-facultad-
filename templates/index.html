@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Horarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body class="body">
+
+  <nav class="navbar">
+    <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+    <a class="nav-link" href="{{ url_for('registrar_entrada') }}">Registrar Entrada</a>
+    <a class="nav-link" href="{{ url_for('registrar_salida') }}">Registrar Salida</a>
+    <a class="nav-link" href="{{ url_for('consultar_registros') }}">Consultar Registros</a>
+  </nav>
+
+  <main class="main-container">
+    {% block contenido %}
+    <h1 class="index-title">Bienvenido al Control de Horarios</h1>
+    {% endblock %}
+  </main>
+
+</body>
+</html>

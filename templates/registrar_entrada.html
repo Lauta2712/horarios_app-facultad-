@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+  <h2>Registrar Entrada</h2>
+
+  <form method="POST" action="/registrar_entrada">
+    <label for="legajo">Legajo:</label>
+    <input type="number" id="legajo" name="legajo" required>
+
+    <label for="dni">Últimos 4 dígitos del DNI:</label>
+    <input type="text" id="dni" name="dni" maxlength="4" required>
+
+    <label for="dependencia">Dependencia:</label>
+    <select id="dependencia" name="dependencia" required>
+      <option value="D01">Edificio Central</option>
+      <option value="D02">Talleres</option>
+      <option value="D03">Centro Deportivo</option>
+    </select>
+
+    <input type="submit" value="Registrar Entrada">
+  </form>
+
+  {% if mensaje %}
+    <p>{{ mensaje }}</p>
+  {% endif %}
+{% endblock %}
