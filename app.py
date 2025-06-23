@@ -38,8 +38,9 @@ def registrar_entrada():
 
             # Verifica si ya existe un registro para hoy
             ya_registrado = RegistroHorario.query.filter_by(
-                idtrabajador=legajo, fecha=hoy
+                idtrabajador=trabajador.id, fecha=hoy
             ).first()
+
 
             if ya_registrado:
                 mensaje = "Ya existe un registro de entrada para hoy"
@@ -49,7 +50,7 @@ def registrar_entrada():
                     fecha=hoy,
                     horaentrada=datetime.now().time(),
                     dependencia=dependencia,
-                    idtrabajador=legajo
+                    idtrabajador=trabajador.id
                 )
                 db.session.add(nuevo_registro)
                 db.session.commit()

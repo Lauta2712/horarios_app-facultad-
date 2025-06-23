@@ -5,6 +5,7 @@ db = SQLAlchemy()
 class Trabajador(db.Model):
     __tablename__ = 'trabajador'
 
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     legajo = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
     apellido = db.Column(db.String(100), nullable=False)
